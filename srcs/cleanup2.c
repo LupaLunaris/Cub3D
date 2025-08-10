@@ -21,14 +21,10 @@ void	cleanup_game(t_game *game)
 	free_mlx_resources(game);
 	if (game->map.grid)
 		free_map_grid(game->map.grid, game->map.height);
-	if (game->sprites)
-		free(game->sprites);
 }
 
 void	free_parsing_data(t_parsing *parsing)
 {
-	int	i;
-
 	if (!parsing)
 		return ;
 	if (parsing->north_texture)
@@ -40,16 +36,7 @@ void	free_parsing_data(t_parsing *parsing)
 	if (parsing->east_texture)
 		free(parsing->east_texture);
 	if (parsing->map_lines)
-	{
-		i = 0;
-		while (i < parsing->map_height)
-		{
-			if (parsing->map_lines[i])
-				free(parsing->map_lines[i]);
-			i++;
-		}
-		free(parsing->map_lines);
-	}
+		free_map_grid(parsing->map_lines, parsing->map_height);
 }
 
 void	free_map_grid(char **grid, int height)

@@ -6,7 +6,7 @@
 /*   By: Jpaulis <Jpaulis@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 17:00:47 by Jpaulis           #+#    #+#             */
-/*   Updated: 2025/07/31 17:03:21 by Jpaulis          ###   ########.fr       */
+/*   Updated: 2025/08/10 16:55:51 by Jpaulis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,22 @@ void	render_scene(t_game *game)
 	cast_rays(game);
 }
 
-static void	apply_shading(int *color, double distance)
-{
-	int		r;
-	int		g;
-	int		b;
-	double	factor;
+// static void	apply_shading(int *color, double distance)
+// {
+// 	int		r;
+// 	int		g;
+// 	int		b;
+// 	double	factor;
 
-	factor = 1.0 / (1.0 + distance * 0.1);
-	r = (*color >> 16) & 0xFF;
-	g = (*color >> 8) & 0xFF;
-	b = *color & 0xFF;
-	r = (int)(r * factor);
-	g = (int)(g * factor);
-	b = (int)(b * factor);
-	*color = (r << 16) | (g << 8) | b;
-}
+// 	factor = 1.0 / (1.0 + distance * 0.1);
+// 	r = (*color >> 16) & 0xFF;
+// 	g = (*color >> 8) & 0xFF;
+// 	b = *color & 0xFF;
+// 	r = (int)(r * factor);
+// 	g = (int)(g * factor);
+// 	b = (int)(b * factor);
+// 	*color = (r << 16) | (g << 8) | b;
+// }
 
 static void	draw_wall_stripe(t_game *game, t_ray *ray,
 	t_texture *texture, t_draw_context ctx)
@@ -64,6 +64,7 @@ static void	draw_wall_stripe(t_game *game, t_ray *ray,
 	double	texture_pos;
 	int		color;
 
+	(void)ray;
 	y = ctx.draw_start;
 	texture_pos = (ctx.draw_start - SCREEN_HEIGHT / 2
 			+ ctx.line_height / 2) * ctx.step;
@@ -72,7 +73,6 @@ static void	draw_wall_stripe(t_game *game, t_ray *ray,
 		texture_y = (int)texture_pos & (texture->height - 1);
 		texture_pos += ctx.step;
 		color = get_texture_pixel(texture, ctx.texture_x, texture_y);
-		apply_shading(&color, ray->perpendicular_wall_distance);
 		put_pixel(game, ctx.x, y, color);
 		y++;
 	}

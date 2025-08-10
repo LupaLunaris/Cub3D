@@ -6,7 +6,7 @@
 /*   By: Jpaulis <Jpaulis@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:33:34 by Jpaulis           #+#    #+#             */
-/*   Updated: 2025/08/08 17:03:55 by Jpaulis          ###   ########.fr       */
+/*   Updated: 2025/08/10 16:54:58 by Jpaulis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <float.h>
 # include "struct.h"
 # include "../libft/libft.h"
 

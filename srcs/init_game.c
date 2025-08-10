@@ -6,7 +6,7 @@
 /*   By: Jpaulis <Jpaulis@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 15:21:05 by Jpaulis           #+#    #+#             */
-/*   Updated: 2025/08/05 15:13:57 by Jpaulis          ###   ########.fr       */
+/*   Updated: 2025/08/09 16:23:46 by Jpaulis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	init_mlx(t_game *game)
 	if (!game->mlx.mlx_ptr)
 		return (1);
 	game->mlx.window_ptr = mlx_new_window(game->mlx.mlx_ptr,
-			SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D - Raycasting");
+			SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D - Game");
 	if (!game->mlx.window_ptr)
 		return (1);
 	game->mlx.image_ptr = mlx_new_image(game->mlx.mlx_ptr,
