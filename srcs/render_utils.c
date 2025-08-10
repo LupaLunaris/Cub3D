@@ -38,9 +38,5 @@ int	get_texture_x(t_game *game, t_ray *ray, t_texture *texture)
 			+ ray->perpendicular_wall_distance * ray->direction.x;
 	wall_x -= floor(wall_x);
 	texture_x = (int)(wall_x * texture->width);
-	if (ray->hit_side == 0 && ray->direction.x > 0)
-		texture_x = texture->width - texture_x - 1;
-	if (ray->hit_side == 1 && ray->direction.y < 0)
-		texture_x = texture->width - texture_x - 1;
 	return (texture_x);
 }
