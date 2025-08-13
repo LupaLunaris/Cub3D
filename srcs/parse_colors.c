@@ -31,6 +31,25 @@ static int	parse_rgb_value(char *str)
 	return (value);
 }
 
+static int	validate_color(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] != ' ')
+		i++;
+	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	while (line[i])
+	{
+		if (!(line[i] == ' ' || line[i] == '\t' || line[i] == '\n'
+				|| (line[i] > 47 && line[i] < 58) || line[i] == 44))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 static void	parse_rgb_string(char *line, int *rgb)
 {
 	char	**parts;
@@ -39,6 +58,8 @@ static void	parse_rgb_string(char *line, int *rgb)
 	i = 0;
 	while (line[i] && line[i] != ' ')
 		i++;
+	if (validate_color(line))
+		error_exit("invalide format color");
 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
 	parts = ft_split(line + i, ',');
@@ -65,7 +86,7 @@ void	parse_color_line(char *line, t_parsing *parsing)
 		if (parsing->floor_color[0] != -1)
 			error_exit("Floor color already defined");
 		parse_rgb_string(line, parsing->floor_color);
-		printf("✅ Floor color: %d,%d,%d\n",
+		printf("Floor color: %d,%d,%d\n",
 			parsing->floor_color[0],
 			parsing->floor_color[1],
 			parsing->floor_color[2]);
@@ -75,7 +96,7 @@ void	parse_color_line(char *line, t_parsing *parsing)
 		if (parsing->ceiling_color[0] != -1)
 			error_exit("Ceiling color already defined");
 		parse_rgb_string(line, parsing->ceiling_color);
-		printf("✅ Ceiling color: %d,%d,%d\n",
+		printf("Ceiling color: %d,%d,%d\n",
 			parsing->ceiling_color[0],
 			parsing->ceiling_color[1],
 			parsing->ceiling_color[2]);

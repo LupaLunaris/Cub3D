@@ -27,7 +27,7 @@ int	open_cub_file(char *filename)
 		perror("Error opening .cub file");
 		return (-1);
 	}
-	printf("✅ File %s opened successfully\n", filename);
+	printf("File %s opened successfully\n", filename);
 	return (fd);
 }
 

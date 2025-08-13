@@ -20,13 +20,9 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include <float.h>
 # include "struct.h"
 # include "../libft/libft.h"
 
-// ═══════════════════════════════════════════════════════════
-// 🖥️ SCREEN CONSTANTS
-// ═══════════════════════════════════════════════════════════
 # define SCREEN_WIDTH 1536
 # define SCREEN_HEIGHT 1024
 # define TILE_SIZE 64
@@ -35,28 +31,19 @@
 # define PI2 1.57079632679
 # define PI3 4.71238898038
 
-// ═══════════════════════════════════════════════════════════
-// 🎮 KEY CODES
-// ═══════════════════════════════════════════════════════════
-# define KEY_W  122  // 122 //119
-# define KEY_A  113 //  113 // 97
+# define KEY_W  119
+# define KEY_A  97
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
 
-// ═══════════════════════════════════════════════════════════
-// 🗺️ MAP CONSTANTS
-// ═══════════════════════════════════════════════════════════
 # define MAP_WIDTH 16
 # define MAP_HEIGHT 12
 # define WALL 1
 # define EMPTY 0
 
-// ═══════════════════════════════════════════════════════════
-// 🎨 COLOR CONSTANTS
-// ═══════════════════════════════════════════════════════════
 # define COLOR_RED 0xFF0000
 # define COLOR_GREEN 0x00FF00
 # define COLOR_BLUE 0x0000FF
@@ -65,10 +52,6 @@
 # define COLOR_GRAY 0x808080
 # define COLOR_DARK_GRAY 0x404040
 
-# include "struct.h"
-// ═══════════════════════════════════════════════════════════
-// 🎮 PLAYER MOVEMENT FUNCTIONS
-// ═══════════════════════════════════════════════════════════
 void		handle_player_movement(t_game *game);
 void		move_player_forward(t_game *game);
 void		move_player_backward(t_game *game);
@@ -76,9 +59,6 @@ void		rotate_player_left(t_game *game);
 void		rotate_player_right(t_game *game);
 void		move_player_left(t_game *game);
 void		move_player_right(t_game *game);
-// ═══════════════════════════════════════════════════════════
-// 🎨 RENDERING FUNCTIONS
-// ═══════════════════════════════════════════════════════════
 void		render_scene(t_game *game);
 void		cast_rays(t_game *game);
 void		cast_single_ray(t_game *game, int x);
@@ -88,19 +68,12 @@ void		calculate_wall_distance(t_ray *ray, t_game *game);
 void		draw_wall_column(t_game *game, t_ray *ray, int x);
 void		draw_floor_and_ceiling(t_game *game);
 void		put_pixel(t_game *game, int x, int y, int color);
-// nouvelle fonction render_utils.c
 t_texture	*select_wall_texture(t_game *game, t_ray *ray);
 int			get_texture_x(t_game *game, t_ray *ray, t_texture *texture);
 int			error_msg(char *message);
-// ═══════════════════════════════════════════════════════════
-// 🖼️ TEXTURE FUNCTIONS
-// ═══════════════════════════════════════════════════════════
 int			load_textures(t_game *game);
 void		free_textures(t_game *game);
 int			get_texture_pixel(t_texture *texture, int x, int y);
-// ═══════════════════════════════════════════════════════════
-// 🗺️ MAP FUNCTIONS
-// ═══════════════════════════════════════════════════════════
 int			init_default_map(t_game *game);
 int			load_map(char *filename, t_game *game);
 void		free_map_grid(char **grid, int height);
@@ -114,9 +87,6 @@ bool		is_spawn(char c);
 void		find_player_position(t_temp_map map, t_vector2d *pos, char *dir);
 void		validate_map(char **map, int height, int width);
 void		free_map_lines(char **map_lines, int count);
-// ═══════════════════════════════════════════════════════════
-// 📄 PARSING FUNCTIONS
-// ═══════════════════════════════════════════════════════════
 int			parse_cub_file(char *filename, t_parsing *parsing);
 int			open_cub_file(char *filename);
 int			check_parsing_complete(t_parsing *parsing);
@@ -131,8 +101,6 @@ bool		is_empty_line(char *line);
 double		normalize_angle(double angle);
 double		calculate_distance(double x1, double y1, double x2, double y2);
 void		cleanup_static_map_data(void);
-// verifie les doublons ou les fonction plus utiliser
-// Nouvelles fonctions de parsing en deux passes
 void		process_map_line_count(char *line, int *count, int *max_width);
 int			count_map_lines_and_width(char *filename, int *max_width);
 int			clean_line_length(char *line);
@@ -157,7 +125,6 @@ void		setup_game_colors(t_game *game, t_parsing *parsing);
 int			parse_config_only(char *filename, t_parsing *parsing);
 int			setup_map_data(char *filename, t_parsing *parsing);
 void		init_parsing(t_parsing *parsing);
-//
 void		process_map_line_count(char *line, int *count, int *max_width);
 int			count_map_lines_and_width(char *filename, int *max_width);
 int			clean_line_length(char *line);
@@ -178,9 +145,6 @@ void		free_texture_paths(t_game *game);
 void		free_mlx_resources(t_game *game);
 void		free_map_grid(char **grid, int height);
 void		clean_gnl_buffer(int fd);
-// ═══════════════════════════════════════════════════════════
-// 🛠️ UTILITY FUNCTIONS
-// ═══════════════════════════════════════════════════════════
 void		error_exit(char *message);
 void		cleanup_and_exit(t_game *game, char *message);
 void		cleanup_resources(t_game *game);

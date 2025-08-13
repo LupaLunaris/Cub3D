@@ -16,7 +16,7 @@ int	load_map(char *filename, t_game *game)
 {
 	t_parsing	parsing;
 
-	printf("🗺️ Loading map from: %s\n", filename);
+	printf("Loading map from: %s\n", filename);
 	ft_memset(&parsing, 0, sizeof(t_parsing));
 	if (parse_cub_file(filename, &parsing))
 	{
@@ -36,6 +36,6 @@ int	load_map(char *filename, t_game *game)
 	setup_game_colors(game, &parsing);
 	transfer_texture_paths(game, &parsing);
 	free_parsing_data(&parsing);
-	printf("✅ Map loaded successfully!\n");
+	printf("Map loaded successfully!\n");
 	return (0);
 }

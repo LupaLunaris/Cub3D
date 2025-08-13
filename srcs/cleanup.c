@@ -19,11 +19,11 @@ void	cleanup_gnl_remainder(void)
 	line = get_next_line(-1);
 	if (line)
 	{
-		printf("✅ GNL remainder freed: %p\n", line);
+		printf("GNL remainder freed: %p\n", line);
 		free(line);
 	}
 	else
-		printf("ℹ️  No GNL remainder to free\n");
+		printf("No GNL remainder to free\n");
 }
 
 void	free_textures(t_game *game)
@@ -40,7 +40,7 @@ void	free_textures(t_game *game)
 	if (game->textures.west_wall.image_ptr)
 		mlx_destroy_image(game->mlx.mlx_ptr,
 			game->textures.west_wall.image_ptr);
-	printf("🧹 Textures freed\n");
+	printf("Textures freed\n");
 }
 
 void	free_texture_paths(t_game *game)

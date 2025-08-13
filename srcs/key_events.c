@@ -32,7 +32,7 @@ int	handle_keypress(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
-		printf("🔄 ESC pressed - cleaning up...\n");
+		printf("ESC pressed - cleaning up...\n");
 		cleanup_game(game);
 		exit(0);
 	}

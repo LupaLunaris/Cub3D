@@ -44,11 +44,6 @@ int	count_map_lines_and_width(char *filename, int *max_width)
 		process_map_line_count(line, &count, max_width);
 		free(line);
 	}
-	while (line != NULL)
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
 	close(fd);
 	return (count);
 }

@@ -29,7 +29,7 @@ int	check_parsing_complete(t_parsing *parsing)
 	if (!parsing->map_lines || parsing->map_height <= 0)
 		error_exit("No map data found");
 	parsing->all_loaded = true;
-	printf("✅ All parsing elements completed successfully\n");
+	printf("All parsing elements completed successfully\n");
 	return (0);
 }
 

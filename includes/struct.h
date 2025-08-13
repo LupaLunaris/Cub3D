@@ -15,11 +15,6 @@
 
 # include <stdbool.h>
 
-// ═══════════════════════════════════════════════════════════
-// 📄 PARSING STRUCTURE
-// Temporary structure to store parsed data from .cub file
-// before transferring to main game structure
-// ═══════════════════════════════════════════════════════════
 typedef struct s_parsing
 {
 	char	*north_texture; // Path to north wall texture file
@@ -34,22 +29,12 @@ typedef struct s_parsing
 	int		map_height; // Map height
 }	t_parsing;
 
-// ═══════════════════════════════════════════════════════════
-// 📐 2D VECTOR STRUCTURE
-// Represents a point or direction in 2D space
-// Used for positions, directions, and mathematical operations
-// ═══════════════════════════════════════════════════════════
 typedef struct s_vector2d
 {
 	double	x; // X coordinate or X component
 	double	y; // Y coordinate or Y component
 }	t_vector2d;
 
-// ═══════════════════════════════════════════════════════════
-// 🖼️ MLX CONTEXT STRUCTURE
-// Contains all MLX-related pointers and image data
-// Manages the display window and pixel buffer
-// ═══════════════════════════════════════════════════════════
 typedef struct s_mlx_context
 {
 	void	*mlx_ptr; // MLX instance pointer
@@ -62,11 +47,6 @@ typedef struct s_mlx_context
 	int		endian; // Byte order (big/little endian)
 }	t_mlx_context;
 
-// ═══════════════════════════════════════════════════════════
-// 🎨 TEXTURE STRUCTURE
-// Represents a single texture image with its properties
-// Contains pixel data and dimensions for wall rendering
-// ═══════════════════════════════════════════════════════════
 typedef struct s_texture
 {
 	void			*image_ptr; // MLX image pointer
@@ -78,11 +58,6 @@ typedef struct s_texture
 	int				endian; // Byte order
 }	t_texture;
 
-// ═══════════════════════════════════════════════════════════
-// 🏗️ TEXTURES COLLECTION STRUCTURE
-// Contains all game textures and colors
-// Central repository for visual assets
-// ═══════════════════════════════════════════════════════════
 typedef struct s_textures
 {
 	t_texture	north_wall; // Texture for north-facing walls
@@ -108,11 +83,6 @@ typedef struct s_draw_context
 	int		x;
 }	t_draw_context;
 
-// ═══════════════════════════════════════════════════════════
-// 🗺️ MAP INFORMATION STRUCTURE
-// Contains the game map data and metadata
-// Stores the 2D grid and map properties
-// ═══════════════════════════════════════════════════════════
 typedef struct s_map_info
 {
 	char	**grid; // 2D array representing the map
@@ -121,10 +91,6 @@ typedef struct s_map_info
 	int		sprite_count; // Number of sprites in map
 }	t_map_info;
 
-// ne remplace pas la structude ci dessu qui est utiliser
-//par t_game une fois tout initialiser
-// est utiliser pour alleger le nombre de paramettre dans parse map.
-// aurais pus etre inclu dans t_parsing mais trop de truc a remodifier apres.
 typedef struct s_temp_map
 {
 	char		**grid;
@@ -132,7 +98,6 @@ typedef struct s_temp_map
 	int			height;
 }	t_temp_map;
 
-// pour la clarter parsque x et y sont des position et non des taille.
 typedef struct s_map_pos
 {
 	char		**grid;
@@ -140,11 +105,6 @@ typedef struct s_map_pos
 	int			x;
 }	t_map_pos;
 
-// ═══════════════════════════════════════════════════════════
-// 🎮 PLAYER STRUCTURE
-// Contains all player-related data
-// Position, orientation, and movement parameters
-// ═══════════════════════════════════════════════════════════
 typedef struct s_player
 {
 	t_vector2d	position; // Current position in map coordinates
@@ -154,11 +114,6 @@ typedef struct s_player
 	double		rotation_speed; // Rotation speed in radians
 }	t_player;
 
-// ═══════════════════════════════════════════════════════════
-// 🔍 RAY STRUCTURE
-// Represents a single ray used in raycasting
-// Contains all data needed for ray-wall intersection
-// ═══════════════════════════════════════════════════════════
 typedef struct s_ray
 {
 	t_vector2d	direction; // Ray direction vector
@@ -171,24 +126,6 @@ typedef struct s_ray
 	bool		wall_hit; // Flag: ray hit a wall
 }	t_ray;
 
-// ═══════════════════════════════════════════════════════════
-// 👻 SPRITE STRUCTURE
-// Represents a sprite/object in the game world
-// Used for rendering 2D objects in 3D space
-// ═══════════════════════════════════════════════════════════
-typedef struct s_sprite
-{
-	t_vector2d	position; // Sprite position in map coordinates
-	double		distance_from_player; // Distance for depth sorting
-	int			texture_x; // X coordinate in texture
-	int			texture_y; // Y coordinate in texture
-}	t_sprite;
-
-// ═══════════════════════════════════════════════════════════
-// 🎬 RENDER INFORMATION STRUCTURE
-// Contains calculated values for wall rendering
-// Temporary data used during the rendering process
-// ═══════════════════════════════════════════════════════════
 typedef struct s_render_info
 {
 	int		line_height; // Height of wall line to draw
@@ -198,11 +135,6 @@ typedef struct s_render_info
 	double	wall_x; // Exact wall hit position
 }	t_render_info;
 
-// ═══════════════════════════════════════════════════════════
-// 🎯 MAIN GAME STRUCTURE
-// Central structure containing all game data
-// The master structure that ties everything together
-// ═══════════════════════════════════════════════════════════
 typedef struct s_game
 {
 	t_parsing		parsing;
@@ -210,7 +142,6 @@ typedef struct s_game
 	t_textures		textures; // All textures and colors
 	t_map_info		map; // Map data and properties
 	t_player		player; // Player state and position
-	t_sprite		*sprites; // Array of sprites in the game
 	bool			game_running; // Game loop control flag
 	int				last_key; // Last pressed key code
 	bool			keys[65536]; // Tableau d'état des touches

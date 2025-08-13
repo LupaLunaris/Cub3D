@@ -29,7 +29,7 @@ void	cleanup_and_exit(t_game *game, char *message)
 
 int	handle_destroy(t_game *game)
 {
-	printf("🔄 Window closed - cleaning up...\n");
+	printf("Window closed - cleaning up...\n");
 	cleanup_game(game);
 	exit(0);
 	return (0);

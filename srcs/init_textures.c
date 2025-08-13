@@ -19,13 +19,13 @@ static int	load_single_texture(void *mlx_ptr, t_texture *texture, char *path)
 
 	if (!path)
 	{
-		printf("❌ Texture path is NULL\n");
+		printf("Texture path is NULL\n");
 		return (1);
 	}
 	texture->image_ptr = mlx_xpm_file_to_image(mlx_ptr, path, &width, &height);
 	if (!texture->image_ptr)
 	{
-		printf("❌ Failed to load texture: %s\n", path);
+		printf("Failed to load texture: %s\n", path);
 		return (1);
 	}
 	texture->width = width;
@@ -34,7 +34,7 @@ static int	load_single_texture(void *mlx_ptr, t_texture *texture, char *path)
 			&texture->bpp, &texture->line_length, &texture->endian);
 	if (!texture->pixels)
 	{
-		printf("❌ Failed to get texture data: %s\n", path);
+		printf("Failed to get texture data: %s\n", path);
 		mlx_destroy_image(mlx_ptr, texture->image_ptr);
 		return (1);
 	}
@@ -43,7 +43,7 @@ static int	load_single_texture(void *mlx_ptr, t_texture *texture, char *path)
 
 int	load_textures(t_game *game)
 {
-	printf("🖼️ Loading textures...\n");
+	printf("Loading textures...\n");
 	if (load_single_texture(game->mlx.mlx_ptr, &game->textures.north_wall,
 			game->textures.north_path))
 		return (1);
@@ -56,7 +56,7 @@ int	load_textures(t_game *game)
 	if (load_single_texture(game->mlx.mlx_ptr, &game->textures.west_wall,
 			game->textures.west_path))
 		return (1);
-	printf("✅ All textures loaded successfully!\n");
+	printf("All textures loaded successfully!\n");
 	return (0);
 }
 

@@ -39,23 +39,6 @@ void	render_scene(t_game *game)
 	cast_rays(game);
 }
 
-// static void	apply_shading(int *color, double distance)
-// {
-// 	int		r;
-// 	int		g;
-// 	int		b;
-// 	double	factor;
-
-// 	factor = 1.0 / (1.0 + distance * 0.1);
-// 	r = (*color >> 16) & 0xFF;
-// 	g = (*color >> 8) & 0xFF;
-// 	b = *color & 0xFF;
-// 	r = (int)(r * factor);
-// 	g = (int)(g * factor);
-// 	b = (int)(b * factor);
-// 	*color = (r << 16) | (g << 8) | b;
-// }
-
 static void	draw_wall_stripe(t_game *game, t_ray *ray,
 	t_texture *texture, t_draw_context ctx)
 {

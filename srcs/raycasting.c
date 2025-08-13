@@ -43,11 +43,11 @@ static void	init_ray_step_and_side_distances(t_ray *ray, t_game *game)
 static void	init_ray_delta_distances(t_ray *ray)
 {
 	if (ray->direction.x == 0)
-		ray->delta_distance.x = DBL_MAX;
+		ray->delta_distance.x = 10e3;
 	else
 		ray->delta_distance.x = fabs(1 / ray->direction.x);
 	if (ray->direction.y == 0)
-		ray->delta_distance.y = DBL_MAX;
+		ray->delta_distance.y = 10e3;
 	else
 		ray->delta_distance.y = fabs(1 / ray->direction.y);
 }
